@@ -7,7 +7,7 @@
  */
 
 
-package student_manage;
+package studentmanage;
 
 public class Student {
 	private int id;

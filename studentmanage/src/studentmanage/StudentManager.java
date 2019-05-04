@@ -6,7 +6,7 @@
  */
 
 
-package student_manage;
+package studentmanage;
 import java.io.*;
 import java.util.*;
 
