@@ -1,4 +1,4 @@
-package student_manage;
+package studentmanage;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -13,7 +13,7 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class delete_success extends JFrame {
+public class DeleteSuccess extends JFrame {
 
 	private JPanel contentPane;
 
@@ -24,7 +24,7 @@ public class delete_success extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					delete_success frame = new delete_success();
+					DeleteSuccess frame = new DeleteSuccess();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -36,7 +36,7 @@ public class delete_success extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public delete_success() {
+	public DeleteSuccess() {
 		setTitle("\u5220\u9664\u5931\u8D25");
 		setBackground(Color.LIGHT_GRAY);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,27 +46,28 @@ public class delete_success extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		JPanel panel = new JPanel();
-		contentPane.add(panel, BorderLayout.CENTER);
-		panel.setLayout(new BorderLayout(0, 0));
+		JPanel deleteTips = new JPanel();
+		contentPane.add(deleteTips, BorderLayout.CENTER);
+		deleteTips.setLayout(new BorderLayout(0, 0));
 		
-		JLabel label = new JLabel("\u5DF2\u5C06\u8BE5\u5B66\u751F\u4FE1\u606F\u6210\u529F\u5220\u9664\u3002");
-		label.setFont(new Font("宋体", Font.BOLD, 30));
-		panel.add(label);
+		JLabel deleteTipsText = new JLabel("\u5DF2\u5C06\u8BE5\u5B66\u751F\u4FE1\u606F\u6210\u529F\u5220\u9664\u3002");
+		deleteTipsText.setFont(new Font("宋体", Font.BOLD, 30));
+		deleteTips.add(deleteTipsText);
 		
-		JPanel panel_1 = new JPanel();
-		contentPane.add(panel_1, BorderLayout.SOUTH);
+		JPanel panelButton = new JPanel();
+		contentPane.add(panelButton, BorderLayout.SOUTH);
 		
+		//确认结果并退回上级
 		JButton button = new JButton("\u786E\u5B9A");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				delete_success.this.dispose();
-				delete de = new delete();
+				DeleteSuccess.this.dispose();
+				Delete de = new Delete();
 				de.setVisible(true);
 			}
 		});
 		button.setFont(new Font("宋体", Font.BOLD, 26));
-		panel_1.add(button);
+		panelButton.add(button);
 	}
 
 }

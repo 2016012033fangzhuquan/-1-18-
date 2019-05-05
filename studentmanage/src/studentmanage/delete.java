@@ -1,4 +1,4 @@
-package student_manage;
+package studentmanage;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -15,10 +15,10 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class delete extends JFrame {
+public class Delete extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField deName;
+	private JTextField nameTextArea;
 
 	/**
 	 * Launch the application.
@@ -27,7 +27,7 @@ public class delete extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					delete frame = new delete();
+					Delete frame = new Delete();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,7 +39,7 @@ public class delete extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public delete() {
+	public Delete() {
 		setTitle("\u5220\u9664\u5B66\u751F\u4FE1\u606F");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 498, 382);
@@ -49,63 +49,65 @@ public class delete extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(3, 1, 5, 2));
 		
-		JPanel panel_1 = new JPanel();
-		contentPane.add(panel_1);
-		panel_1.setLayout(new BorderLayout(0, 0));
+		JPanel tips = new JPanel();
+		contentPane.add(tips);
+		tips.setLayout(new BorderLayout(0, 0));
 		
-		JLabel label = new JLabel("\u67E5\u627E\u5B66\u751F\u4FE1\u606F\u5E76\u5220\u9664\uFF1A");
-		label.setFont(new Font("宋体", Font.BOLD, 26));
-		panel_1.add(label, BorderLayout.CENTER);
+		JLabel tipsText = new JLabel("\u67E5\u627E\u5B66\u751F\u4FE1\u606F\u5E76\u5220\u9664\uFF1A");
+		tipsText.setFont(new Font("宋体", Font.BOLD, 26));
+		tips.add(tipsText, BorderLayout.CENTER);
 		
-		JPanel panel = new JPanel();
-		contentPane.add(panel);
-		panel.setLayout(new BorderLayout(0, 0));
+		JPanel panelName = new JPanel();
+		contentPane.add(panelName);
+		panelName.setLayout(new BorderLayout(0, 0));
 		
-		JLabel label_1 = new JLabel("\u59D3\u540D\uFF1A");
-		label_1.setFont(new Font("宋体", Font.BOLD, 26));
-		panel.add(label_1, BorderLayout.WEST);
+		JLabel name = new JLabel("\u59D3\u540D\uFF1A");
+		name.setFont(new Font("宋体", Font.BOLD, 26));
+		panelName.add(name, BorderLayout.WEST);
 		
-		deName = new JTextField();
-		deName.setFont(new Font("宋体", Font.BOLD, 26));
-		panel.add(deName, BorderLayout.CENTER);
-		deName.setColumns(28);
+		nameTextArea = new JTextField();
+		nameTextArea.setFont(new Font("宋体", Font.BOLD, 26));
+		panelName.add(nameTextArea, BorderLayout.CENTER);
+		nameTextArea.setColumns(28);
 		
-		JPanel panel_2 = new JPanel();
-		contentPane.add(panel_2);
-		panel_2.setLayout(new GridLayout(1, 0, 0, 0));
+		JPanel panelButtons = new JPanel();
+		contentPane.add(panelButtons);
+		panelButtons.setLayout(new GridLayout(1, 0, 0, 0));
+		
 		
 		JButton delete = new JButton("\u5220\u9664");
 		delete.addActionListener(new ActionListener() {
+		//调用StudentManager类中方法完成查找并删除
 			public void actionPerformed(ActionEvent e) {
-				String searchName = deName.getText();
+				String searchName = nameTextArea.getText();
 				StudentManager deleteSt = new StudentManager();
 				deleteSt.read();
 				int index = deleteSt.delete(searchName);
 				if(index == -1) {
-					delete.this.dispose();
-					delete_fail deleteF = new delete_fail();
+					Delete.this.dispose();
+					DeleteFail deleteF = new DeleteFail();
 					deleteF.setVisible(true);
 				}
 				else {
-					delete.this.dispose();
-					delete_success deleteS = new delete_success();
+					Delete.this.dispose();
+					DeleteSuccess deleteS = new DeleteSuccess();
 					deleteS.setVisible(true);
 				}
 			}
 		});
 		delete.setFont(new Font("宋体", Font.BOLD, 26));
-		panel_2.add(delete);
+		panelButtons.add(delete);
 		
 		JButton back = new JButton("\u8FD4\u56DE");
 		back.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				delete.this.dispose();
-				gui menu = new gui();
+				Delete.this.dispose();
+				GUI menu = new GUI();
 				menu.setVisible(true);
 			}
 		});
 		back.setFont(new Font("宋体", Font.BOLD, 26));
-		panel_2.add(back);
+		panelButtons.add(back);
 		
 		JButton exit = new JButton("\u9000\u51FA");
 		exit.addActionListener(new ActionListener() {
@@ -114,7 +116,7 @@ public class delete extends JFrame {
 			}
 		});
 		exit.setFont(new Font("宋体", Font.BOLD, 26));
-		panel_2.add(exit);
+		panelButtons.add(exit);
 	}
 
 }
