@@ -1,4 +1,4 @@
-package student_manage;
+package StudentManage;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -21,11 +21,11 @@ import java.io.IOException;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class insert extends JFrame {
+public class Insert extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField id;
-	private JTextField sname;
+	private JTextField idTextArea;
+	private JTextField studentName;
 
 	/**
 	 * Launch the application.
@@ -34,7 +34,7 @@ public class insert extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					insert frame = new insert();
+					Insert frame = new Insert();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,7 +46,7 @@ public class insert extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public insert() {
+	public Insert() {
 		setTitle("\u63D2\u5165\u5B66\u751F\u4FE1\u606F");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 500);
@@ -56,51 +56,53 @@ public class insert extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(6, 1, 5, 2));
 		
-		JPanel panel = new JPanel();
-		contentPane.add(panel);
-		panel.setLayout(new BorderLayout(0, 0));
+		JPanel tips = new JPanel();
+		contentPane.add(tips);
+		tips.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel = new JLabel("\u8F93\u5165\u5B66\u751F\u4FE1\u606F\uFF1A");
-		lblNewLabel.setFont(new Font("宋体", Font.BOLD, 26));
-		panel.add(lblNewLabel, BorderLayout.CENTER);
+		//以下各项均为读取输入学生信息
+		JLabel tipsText = new JLabel("\u8F93\u5165\u5B66\u751F\u4FE1\u606F\uFF1A");
+		tipsText.setFont(new Font("宋体", Font.BOLD, 26));
+		tips.add(tipsText, BorderLayout.CENTER);
 		
-		JPanel panel_1 = new JPanel();
-		contentPane.add(panel_1);
-		panel_1.setLayout(new BorderLayout(0, 0));
+		JPanel panelId = new JPanel();
+		contentPane.add(panelId);
+		panelId.setLayout(new BorderLayout(0, 0));
 		
-		JLabel label = new JLabel("\u5B66\u53F7\uFF1A");
-		label.setFont(new Font("宋体", Font.BOLD, 28));
-		panel_1.add(label, BorderLayout.WEST);
+		JLabel id = new JLabel("\u5B66\u53F7\uFF1A");
+		id.setFont(new Font("宋体", Font.BOLD, 28));
+		panelId.add(id, BorderLayout.WEST);
 		
-		id = new JTextField();
-		id.setFont(new Font("宋体", Font.BOLD, 20));
-		panel_1.add(id, BorderLayout.EAST);
-		id.setColumns(28);
+		idTextArea = new JTextField();
+		idTextArea.setFont(new Font("宋体", Font.BOLD, 20));
+		panelId.add(idTextArea, BorderLayout.EAST);
+		idTextArea.setColumns(28);
 		
-		JPanel panel_2 = new JPanel();
-		contentPane.add(panel_2);
-		panel_2.setLayout(new BorderLayout(0, 0));
+		JPanel panelName = new JPanel();
+		contentPane.add(panelName);
+		panelName.setLayout(new BorderLayout(0, 0));
 		
-		sname = new JTextField();
-		sname.setFont(new Font("宋体", Font.BOLD, 20));
-		sname.setColumns(28);
-		panel_2.add(sname, BorderLayout.EAST);
+		studentName = new JTextField();
+		studentName.setFont(new Font("宋体", Font.BOLD, 20));
+		studentName.setColumns(28);
+		panelName.add(studentName, BorderLayout.EAST);
 		
-		JLabel label_1 = new JLabel("\u59D3\u540D\uFF1A");
-		label_1.setFont(new Font("宋体", Font.BOLD, 28));
-		panel_2.add(label_1, BorderLayout.WEST);
+		JLabel nameTextArea = new JLabel("\u59D3\u540D\uFF1A");
+		nameTextArea.setFont(new Font("宋体", Font.BOLD, 28));
+		panelName.add(nameTextArea, BorderLayout.WEST);
 		
-		JPanel panel_3 = new JPanel();
-		contentPane.add(panel_3);
-		panel_3.setLayout(new BorderLayout(0, 0));
+		JPanel panelBirth = new JPanel();
+		contentPane.add(panelBirth);
+		panelBirth.setLayout(new BorderLayout(0, 0));
 		
-		JLabel label_2 = new JLabel("\u751F\u65E5\uFF1A");
-		label_2.setFont(new Font("宋体", Font.BOLD, 28));
-		panel_3.add(label_2, BorderLayout.WEST);
+		JLabel birthday = new JLabel("\u751F\u65E5\uFF1A");
+		birthday.setFont(new Font("宋体", Font.BOLD, 28));
+		panelBirth.add(birthday, BorderLayout.WEST);
 		
-		JPanel panel_6 = new JPanel();
-		panel_3.add(panel_6, BorderLayout.CENTER);
+		JPanel panelBirthSelect = new JPanel();
+		panelBirth.add(panelBirthSelect, BorderLayout.CENTER);
 		
+		//定义生日信息下拉列表的选项
 		String[]year = new String[15];
 		for(int i = 0;i<15;i++) {
 			year[i] = i+1995+"";
@@ -116,41 +118,42 @@ public class insert extends JFrame {
 			day[i] = 1+i+"";
 		}
 		
-		JComboBox year_comboBox = new JComboBox(year);
-		year_comboBox.setFont(new Font("宋体", Font.BOLD, 26));
-		panel_6.add(year_comboBox);
-		JComboBox month_comboBox = new JComboBox(month);
-		month_comboBox.setFont(new Font("宋体", Font.BOLD, 26));
-		panel_6.add(month_comboBox);
-		JComboBox day_comboBox = new JComboBox(day);
-		day_comboBox.setFont(new Font("宋体", Font.BOLD, 26));
-		panel_6.add(day_comboBox);
+		JComboBox yearComboBox = new JComboBox(year);
+		yearComboBox.setFont(new Font("宋体", Font.BOLD, 26));
+		panelBirthSelect.add(yearComboBox);
+		JComboBox monthComboBox = new JComboBox(month);
+		monthComboBox.setFont(new Font("宋体", Font.BOLD, 26));
+		panelBirthSelect.add(monthComboBox);
+		JComboBox dayComboBox = new JComboBox(day);
+		dayComboBox.setFont(new Font("宋体", Font.BOLD, 26));
+		panelBirthSelect.add(dayComboBox);
 		
-		JPanel panel_4 = new JPanel();
-		contentPane.add(panel_4);
-		panel_4.setLayout(new GridLayout(0, 2, 0, 0));
+		JPanel panelGender = new JPanel();
+		contentPane.add(panelGender);
+		panelGender.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		JLabel label_3 = new JLabel("\u6027\u522B\uFF1A");
-		label_3.setFont(new Font("宋体", Font.BOLD, 28));
-		panel_4.add(label_3);
+		JLabel studentGender = new JLabel("\u6027\u522B\uFF1A");
+		studentGender.setFont(new Font("宋体", Font.BOLD, 28));
+		panelGender.add(studentGender);
 		
 		String[] sexs = {"男","女"};
-		JComboBox sex_comboBox = new JComboBox(sexs);
-		sex_comboBox.setMaximumRowCount(2);
-		sex_comboBox.setFont(new Font("宋体", Font.BOLD, 20));
-		panel_4.add(sex_comboBox);
+		JComboBox sexComboBox = new JComboBox(sexs);
+		sexComboBox.setMaximumRowCount(2);
+		sexComboBox.setFont(new Font("宋体", Font.BOLD, 20));
+		panelGender.add(sexComboBox);
 		
-		JPanel panel_5 = new JPanel();
-		contentPane.add(panel_5);
-		panel_5.setLayout(new GridLayout(1, 0, 0, 0));
+		JPanel panelButtons = new JPanel();
+		contentPane.add(panelButtons);
+		panelButtons.setLayout(new GridLayout(1, 0, 0, 0));
 		
+		//读取上述的各文本框和combobox内容，并调用StudentManager类中的函数
 		JButton submit = new JButton("\u63D0\u4EA4");
 		submit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String ID = id.getText();
-				String name = sname.getText();
-				String birDate = (String)year_comboBox.getSelectedItem() +  (String)month_comboBox.getSelectedItem() + (String)day_comboBox.getSelectedItem();
-				String gender = (String)sex_comboBox.getSelectedItem();
+				String ID = idTextArea.getText();
+				String name = studentName.getText();
+				String birDate = (String)yearComboBox.getSelectedItem() +  (String)monthComboBox.getSelectedItem() + (String)dayComboBox.getSelectedItem();
+				String gender = (String)sexComboBox.getSelectedItem();
 				Student tmp = new Student();
 				tmp.setID(Integer.parseInt(ID));
 				tmp.setName(name);
@@ -167,18 +170,18 @@ public class insert extends JFrame {
 			}
 		});
 		submit.setFont(new Font("宋体", Font.BOLD, 22));
-		panel_5.add(submit);
+		panelButtons.add(submit);
 		
 		JButton back = new JButton("\u8FD4\u56DE");
 		back.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				insert.this.dispose();
-				gui  menu = new gui();
+				Insert.this.dispose();
+				GUI  menu = new GUI();
 				menu.setVisible(true);
 			}
 		});
 		back.setFont(new Font("宋体", Font.BOLD, 22));
-		panel_5.add(back);
+		panelButtons.add(back);
 		
 		JButton exit = new JButton("\u9000\u51FA");
 		exit.setFont(new Font("宋体", Font.BOLD, 22));
@@ -188,7 +191,7 @@ public class insert extends JFrame {
 				System.exit(0);
 			}
 		});
-		panel_5.add(exit);
+		panelButtons.add(exit);
 	}
 
 }

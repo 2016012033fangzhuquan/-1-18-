@@ -1,4 +1,4 @@
-package student_manage;
+package StudentManage;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -23,7 +23,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class gui extends JFrame {
+public class GUI extends JFrame {
 
 	private JPanel contentPane;
 
@@ -34,7 +34,7 @@ public class gui extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					gui frame = new gui();
+					GUI frame = new GUI();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,7 +46,8 @@ public class gui extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public gui() {
+	//该界面提供多个按钮选择，每个按钮跳转到不同的功能界面
+	public GUI() {
 		setTitle("\u5B66\u751F\u4FE1\u606F\u7BA1\u7406");
 		setBackground(SystemColor.inactiveCaption);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -57,167 +58,125 @@ public class gui extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(9, 1, 5, 2));
 		
-		JPanel panel = new JPanel();
-		contentPane.add(panel);
-		panel.setLayout(new BorderLayout(0, 0));
+		JPanel tips = new JPanel();
+		contentPane.add(tips);
+		tips.setLayout(new BorderLayout(0, 0));
 		
-		JLabel label = new JLabel("\u8BF7\u9009\u62E9\u8981\u6267\u884C\u7684\u64CD\u4F5C\uFF1A");
-		label.setFont(new Font("宋体", Font.BOLD, 26));
-		panel.add(label, BorderLayout.CENTER);
+		JLabel tipsText = new JLabel("\u8BF7\u9009\u62E9\u8981\u6267\u884C\u7684\u64CD\u4F5C\uFF1A");
+		tipsText.setFont(new Font("宋体", Font.BOLD, 26));
+		tips.add(tipsText, BorderLayout.CENTER);
 		
-		JPanel panel_1 = new JPanel();
-		contentPane.add(panel_1);
-		panel_1.setLayout(new BorderLayout(0, 0));
+		JPanel topLine = new JPanel();
+		contentPane.add(topLine);
+		topLine.setLayout(new BorderLayout(0, 0));
 		
-		JLabel label_1 = new JLabel("*************************");
-		label_1.setFont(new Font("宋体", Font.BOLD, 24));
-		panel_1.add(label_1, BorderLayout.CENTER);
+		JLabel topLineText = new JLabel("*************************");
+		topLineText.setFont(new Font("宋体", Font.BOLD, 24));
+		topLine.add(topLineText, BorderLayout.CENTER);
 		
+		//跳转到插入信息界面
 		JPanel insert = new JPanel();
 		contentPane.add(insert);
 		insert.setLayout(new BorderLayout(0, 0));
 		
-		JButton insert_ = new JButton("1  \u63D2\u5165");
-		insert_.addActionListener(new ActionListener() {
+		JButton insertButton = new JButton("1  \u63D2\u5165");
+		insertButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gui.this.dispose();
-				insert ins = new insert();
+				GUI.this.dispose();
+				Insert ins = new Insert();
 				ins.setVisible(true);
 			}
 		});
-		insert_.setFont(new Font("宋体", Font.BOLD, 24));
+		insertButton.setFont(new Font("宋体", Font.BOLD, 24));
 
-		insert.add(insert_, BorderLayout.CENTER);
+		insert.add(insertButton, BorderLayout.CENTER);
 		
-		JLabel label_2 = new JLabel("*");
-		label_2.setFont(new Font("宋体", Font.BOLD, 24));
-		insert.add(label_2, BorderLayout.WEST);
-		
-		JLabel label_3 = new JLabel("*");
-		label_3.setFont(new Font("宋体", Font.BOLD, 24));
-		insert.add(label_3, BorderLayout.EAST);
-		
+		//跳转到搜索学生信息界面
 		JPanel find = new JPanel();
 		contentPane.add(find);
 		find.setLayout(new BorderLayout(0, 0));
 		
-		JButton find_ = new JButton("2  \u67E5\u627E");
-		find_.addActionListener(new ActionListener() {
+		JButton findButton = new JButton("2  \u67E5\u627E");
+		findButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gui.this.dispose();
-				find fi = new find();
+				GUI.this.dispose();
+				Find fi = new Find();
 				fi.setVisible(true);
 			}
 		});
-		find_.setFont(new Font("宋体", Font.BOLD, 24));
-		find.add(find_, BorderLayout.CENTER);
+		findButton.setFont(new Font("宋体", Font.BOLD, 24));
+		find.add(findButton, BorderLayout.CENTER);
 		
-		JLabel label_4 = new JLabel("*");
-		label_4.setFont(new Font("宋体", Font.BOLD, 24));
-		find.add(label_4, BorderLayout.WEST);
+		//跳转到删除学生信息界面
+		JPanel delete = new JPanel();
+		contentPane.add(delete);
+		delete.setLayout(new BorderLayout(0, 0));
 		
-		JLabel label_5 = new JLabel("*");
-		label_5.setFont(new Font("宋体", Font.BOLD, 24));
-		find.add(label_5, BorderLayout.EAST);
-		
-		JPanel panel_4 = new JPanel();
-		contentPane.add(panel_4);
-		panel_4.setLayout(new BorderLayout(0, 0));
-		
-		JButton delete_ = new JButton("3  \u5220\u9664");
-		delete_.addActionListener(new ActionListener() {
+		JButton deleteButton = new JButton("3  \u5220\u9664");
+		deleteButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gui.this.dispose();
-				delete de = new delete();
+				GUI.this.dispose();
+				Delete de = new Delete();
 				de.setVisible(true);
 			}
 		});
-		delete_.setFont(new Font("宋体", Font.BOLD, 24));
-		panel_4.add(delete_, BorderLayout.CENTER);
+		deleteButton.setFont(new Font("宋体", Font.BOLD, 24));
+		delete.add(deleteButton, BorderLayout.CENTER);
 		
-		JLabel label_6 = new JLabel("*");
-		label_6.setFont(new Font("宋体", Font.BOLD, 24));
-		panel_4.add(label_6, BorderLayout.WEST);
+		//跳转到修改学生信息界面
+		JPanel revise = new JPanel();
+		contentPane.add(revise);
+		revise.setLayout(new BorderLayout(0, 0));
 		
-		JLabel label_10 = new JLabel("*");
-		label_10.setFont(new Font("宋体", Font.BOLD, 24));
-		panel_4.add(label_10, BorderLayout.EAST);
-		
-		JPanel panel_5 = new JPanel();
-		contentPane.add(panel_5);
-		panel_5.setLayout(new BorderLayout(0, 0));
-		
-		JButton revise_ = new JButton("4  \u4FEE\u6539");
-		revise_.addActionListener(new ActionListener() {
+		JButton reviseButton = new JButton("4  \u4FEE\u6539");
+		reviseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gui.this.dispose();
-				revise re = new revise();
+				GUI.this.dispose();
+				Revise re = new Revise();
 				re.setVisible(true);
 			}
 		});
-		revise_.setFont(new Font("宋体", Font.BOLD, 24));
-		panel_5.add(revise_, BorderLayout.CENTER);
+		reviseButton.setFont(new Font("宋体", Font.BOLD, 24));
+		revise.add(reviseButton, BorderLayout.CENTER);
 		
-		JLabel label_7 = new JLabel("*");
-		label_7.setFont(new Font("宋体", Font.BOLD, 24));
-		panel_5.add(label_7, BorderLayout.WEST);
+		//全部学生信息展示页
+		JPanel output = new JPanel();
+		contentPane.add(output);
+		output.setLayout(new BorderLayout(0, 0));
 		
-		JLabel label_11 = new JLabel("*");
-		label_11.setFont(new Font("宋体", Font.BOLD, 24));
-		panel_5.add(label_11, BorderLayout.EAST);
-		
-		JPanel panel_6 = new JPanel();
-		contentPane.add(panel_6);
-		panel_6.setLayout(new BorderLayout(0, 0));
-		
-		JButton output_ = new JButton("5  \u8F93\u51FA");
-		output_.addActionListener(new ActionListener() {
+		JButton outputButton = new JButton("5  \u8F93\u51FA");
+		outputButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gui.this.dispose();
-				output OP = new output();
+				GUI.this.dispose();
+				Output OP = new Output();
 				OP.setVisible(true);
 			}
 		});
-		output_.setFont(new Font("宋体", Font.BOLD, 24));
-		panel_6.add(output_, BorderLayout.CENTER);
+		outputButton.setFont(new Font("宋体", Font.BOLD, 24));
+		output.add(outputButton, BorderLayout.CENTER);
 		
-		JLabel label_8 = new JLabel("*");
-		label_8.setFont(new Font("宋体", Font.BOLD, 24));
-		panel_6.add(label_8, BorderLayout.WEST);
+		//退出整个系统
+		JPanel exit = new JPanel();
+		contentPane.add(exit);
+		exit.setLayout(new BorderLayout(0, 0));
 		
-		JLabel label_12 = new JLabel("*");
-		label_12.setFont(new Font("宋体", Font.BOLD, 24));
-		panel_6.add(label_12, BorderLayout.EAST);
-		
-		JPanel panel_7 = new JPanel();
-		contentPane.add(panel_7);
-		panel_7.setLayout(new BorderLayout(0, 0));
-		
-		JButton exit_ = new JButton("6  \u9000\u51FA");
-		exit_.setFont(new Font("宋体", Font.BOLD, 24));
-		exit_.addMouseListener(new MouseAdapter() {
-			@Override
+		JButton exitButton = new JButton("6  \u9000\u51FA");
+		exitButton.setFont(new Font("宋体", Font.BOLD, 24));
+		exitButton.addMouseListener(new MouseAdapter() {
+			@Override			
 			public void mouseClicked(MouseEvent e) {
 				System.exit(0);
 			}
 		});
-		panel_7.add(exit_, BorderLayout.CENTER);
+		exit.add(exitButton, BorderLayout.CENTER);
 		
-		JLabel label_9 = new JLabel("*");
-		label_9.setFont(new Font("宋体", Font.BOLD, 24));
-		panel_7.add(label_9, BorderLayout.WEST);
+		JPanel bottomLine = new JPanel();
+		contentPane.add(bottomLine);
+		bottomLine.setLayout(new BorderLayout(0, 0));
 		
-		JLabel label_13 = new JLabel("*");
-		label_13.setFont(new Font("宋体", Font.BOLD, 24));
-		panel_7.add(label_13, BorderLayout.EAST);
-		
-		JPanel panel_8 = new JPanel();
-		contentPane.add(panel_8);
-		panel_8.setLayout(new BorderLayout(0, 0));
-		
-		JLabel label_14 = new JLabel("*************************");
-		label_14.setFont(new Font("宋体", Font.BOLD, 24));
-		panel_8.add(label_14, BorderLayout.CENTER);
+		JLabel bottomLineText = new JLabel("*************************");
+		bottomLineText.setFont(new Font("宋体", Font.BOLD, 24));
+		bottomLine.add(bottomLineText, BorderLayout.CENTER);
 		
 		
 	}
